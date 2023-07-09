@@ -12,7 +12,7 @@ const { heading, posts } = Astro.props
 ---
 
 <div class="blog-posts-link">
-  <h3>{heading}</h3>
+  <h2>{heading}</h2>
   {
     posts.length === 0 ? (
       <NoContents contents={posts} />
@@ -46,7 +46,7 @@ const { heading, posts } = Astro.props
   .blog-posts-link {
     margin: 0rem 0rem 2rem 0rem;
   }
-  .blog-posts-link h3 {
+  .blog-posts-link h2 {
     margin: 0;
     padding-left: 0.4rem;
     color: #777;
