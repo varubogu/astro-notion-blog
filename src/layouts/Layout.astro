@@ -86,7 +86,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
 
         <div class="content">
           <header>
-            <h1>
+            <p class="blog-title">
               <a href={getNavLink('/')}>
                 {
                   database.Icon && database.Icon.Type === 'emoji' ? (
@@ -109,7 +109,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
                   )
                 }
               </a>
-            </h1>
+            </p>
             <div class="description">
               {database.Description}
             </div>
@@ -197,34 +197,34 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
   main header {
     padding: 20px 0 20px;
   }
-  main header h1 {
+  main header .blog-title {
     font-weight: 700;
     color: #333;
   }
-  main header h1 a {
+  main header .blog-title a {
     display: block;
     color: inherit;
   }
-  main header h1 a:hover {
+  main header .blog-title a:hover {
     color: inherit;
   }
-  main header h1 a span,
-  main header h1 a img {
+  main header .blog-title a span,
+  main header .blog-title a img {
     display: inline-block;
     font-size: 1.1em;
   }
-  main header h1 a span {
+  main header .blog-title a span {
     margin-right: 0.3em;
     margin-left: -0.1rem;
   }
-  main header h1 a img {
+  main header .blog-title a img {
     width: 1.2em;
     height: 1.2em;
     margin-right: 0.2em;
     margin-left: -0.3rem;
     vertical-align: sub;
   }
-  main header h1 a img.custom-icon {
+  main header .blog-title a img.custom-icon {
     border-radius: var(--radius);
   }
 
@@ -330,7 +330,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
     background: rgba(247, 212, 255, 0.8);
   }
 
-  h1 {
+  .blog-title {
     margin: 0;
     color: var(--fg);
     font-size: 2rem;
@@ -358,7 +358,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
   }
 
   @media (max-width: 640px) {
-    h1 {
+    .blog-title {
       font-size: 1.6rem;
     }
 
