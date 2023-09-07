@@ -26,3 +26,6 @@ tmp/
 
 public/notion/*
 !public/notion/.gitkeep
+
+# JetBrains Tools
+.idea/
