@@ -56,10 +56,10 @@ const currentTag = posts[0].Tags.find((t) => t.name === tag)
 >
   <div slot="main" class={styles.main}>
     <header>
-      <h2>
+      <h1>
         <span class={`tag ${currentTag.color}`}>{tag}</span>
         {page}/{numberOfPages}
-      </h2>
+      </h1>
     </header>
 
     {
