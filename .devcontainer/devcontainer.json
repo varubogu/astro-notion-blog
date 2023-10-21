@@ -47,7 +47,8 @@
         "christian-kohler.path-intellisense",
         "mosapride.zenkaku",
         "ICS.japanese-proofreading",
-        "donjayamanne.githistory"
+        "donjayamanne.githistory",
+        "GitHub.vscode-pull-request-github"
       ]
     }
   }
