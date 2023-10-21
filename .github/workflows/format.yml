@@ -23,7 +23,7 @@ jobs:
           node-version: 18.x
 
       - name: Run format
-        run: yarn format
+        run: npm run format
 
       # Commit all changed files back to the repository
       - uses: stefanzweifel/git-auto-commit-action@v4
