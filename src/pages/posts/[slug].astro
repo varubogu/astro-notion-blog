@@ -25,6 +25,7 @@ import PostRelativeLink from '../../components/PostRelativeLink.astro'
 import BlogPostsLink from '../../components/BlogPostsLink.astro'
 import BlogTagsLink from '../../components/BlogTagsLink.astro'
 import styles from '../../styles/blog.module.css'
+import BlogPostHeadline from '../../components/BlogPostHeadline.astro'
 
 export async function getStaticPaths() {
   const posts = await getAllPosts()
@@ -123,5 +124,8 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
     <BlogPostsLink heading="Recommended" posts={rankedPosts} />
     <BlogPostsLink heading="Latest posts" posts={recentPosts} />
     <BlogTagsLink heading="Categories" tags={tags} />
+  </div>
+  <div slot="right_navi" class="right_navi">
+    <BlogPostHeadline heading="目次" blocks={blocks}/>
   </div>
 </Layout>

@@ -140,6 +140,9 @@ if (database.Icon && database.Icon.Type === 'file') {
         <aside>
           <slot name="aside" />
         </aside>
+        <nav class="right_navi">
+          <slot name="right_navi" />
+        </nav>
       </div>
     </div>
 
@@ -158,7 +161,6 @@ if (database.Icon && database.Icon.Type === 'file') {
 
   .container > div {
     display: flex;
-    max-width: 1280px;
   }
   @media (max-width: 640px) {
     .container > div {
@@ -187,6 +189,24 @@ if (database.Icon && database.Icon.Type === 'file') {
     aside {
       order: 2;
       width: 100%;
+    }
+  }
+  .right_navi {
+    top: 0;
+    order: 3;
+    width: 300px;
+    padding: 20px 20px;
+    background-color: #f4f4f4;
+    flex-shrink: 0; /* サイドバーの幅が縮小しないように設定 */
+    position: sticky;
+    height: calc(100vh - 20px); /* ビューポートの高さから上部距離を引いた高さにする */
+    overflow-y: auto; /* 高さがビューポートを超えるとスクロール可能に */
+  }
+  @media (max-width: 640px) {
+    .right_navi {
+      order: 2;
+      width: 100%;
+      height: 100%;
     }
   }
 
