@@ -1,6 +1,5 @@
 ---
 import { Block } from '../lib/interfaces.js'
-import NotionBlocks from './NotionBlocks.astro.jsx'
 import TableOfContents from './notion-blocks/TableOfContents.astro';
 
 export interface Props {
@@ -34,7 +33,7 @@ let headings = blocks.filter((b: interfaces.Block) =>
 </div>
 <style>
   .blog-headline-link {
-    
+
   }
   .post-headline {
     padding: 0.5rem 0;
