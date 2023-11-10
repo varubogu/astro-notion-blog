@@ -19,6 +19,7 @@ import BlogPostsLink from '../../../../../components/BlogPostsLink.astro'
 import BlogTagsLink from '../../../../../components/BlogTagsLink.astro'
 import styles from '../../../../../styles/blog.module.css'
 import '../../../../../styles/notion-color.css'
+import TweetTimeline from '../../../../../components/TweetTimeline.astro'
 
 export async function getStaticPaths() {
   const allTags = await getAllTags()
@@ -91,6 +92,7 @@ const currentTag = posts[0].Tags.find((t) => t.name === tag)
   <div slot="aside" class={styles.aside}>
     <BlogPostsLink heading="Recommended" posts={rankedPosts} />
     <BlogTagsLink heading="Categories" tags={tags} />
+    <TweetTimeline />
   </div>
 </Layout>
 
