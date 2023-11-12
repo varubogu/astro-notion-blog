@@ -43,6 +43,6 @@ export default defineConfig({
     sitemap(),
   ],
   sitemap: {
-    trailingSlash: 'remove'
-  }
+    trailingSlash: 'remove',
+  },
 });
