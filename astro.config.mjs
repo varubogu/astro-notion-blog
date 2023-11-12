@@ -42,4 +42,7 @@ export default defineConfig({
     PublicNotionCopier(),
     sitemap(),
   ],
+  sitemap: {
+    trailingSlash: 'remove'
+  }
 });
