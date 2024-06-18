@@ -1,0 +1,68 @@
+---
+import type { Post } from '../lib/interfaces.ts'
+import { BACKEND_ENDPOINT_URL } from '../server-constants'
+import '../styles/notion-color.css'
+
+export interface Props {
+  post: Post
+}
+
+
+const { post } = Astro.props
+---
+<div>
+  <form id="commentForm" method="post" class="comment-form" action=`${BACKEND_ENDPOINT_URL}/api/v1/comments/add`>
+    <div>
+      <label for="name">名前</label>
+    </div>
+    <div>
+      <input type="text" id="name" class="comment-input" name="name" required>
+    </div>
+    <div>
+      <label for="comment">コメント</label>
+    </div>
+    <div>
+      <textarea id="comment" class="comment-input"></textarea>
+      <!-- <QuillEditor client:load/> -->
+    </div>
+    <input type="hidden" name="slug" value={post.Slug}>
+    <button type="submit">送信</button>
+  </form>
+</div>
+<style>
+  .comment-form {
+    width: 100%;
+  }
+  .comment-input {
+    width: 100%;
+  }
+  .comment-form #comment {
+    height: 100px;
+  }
+</style>
+<script>
+document.getElementById('commentForm')?.addEventListener('submit', async function(ev) {
+  ev.preventDefault();
+  const formData = new FormData(ev.target);
+  const jsonObject: any = {};
+  formData.forEach((value, key) => {
+    jsonObject[key] = value;
+  });
+  jsonObject['comment'] = document.getElementById('comment')?.value
+
+  // ここでformDataに追加して送信処理を行います
+  try {
+    const response = await fetch(ev.currentTarget.action, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(jsonObject),
+    });
+    const data = await response.json();
+    alert('コメントを投稿しました。管理者の承認後に公開されます。');
+  } catch (error) {
+    alert('エラーが発生しました。');
+  }
+})
+</script>
