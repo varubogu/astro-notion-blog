@@ -27,6 +27,7 @@ import BlogTagsLink from '../../components/BlogTagsLink.astro'
 import styles from '../../styles/blog.module.css'
 import BlogPostHeadline from '../../components/BlogPostHeadline.astro'
 import TweetTimeline from '../../components/TweetTimeline.astro'
+import CommentAreaClient from '../../components/CommentAreaClient.astro'
 import CommentForm from '../../components/CommentForm.astro'
 
 export async function getStaticPaths() {
@@ -109,6 +110,7 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
       <PostPageTitle post={post} enableLink={false} />
       <PostBody blocks={blocks} />
       <PostTags post={post} />
+      <CommentAreaClient post={post} />
       <CommentForm post={post} />
 
       <footer>
