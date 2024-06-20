@@ -3,7 +3,9 @@ export const NOTION_API_SECRET =
 export const DATABASE_ID =
   import.meta.env.DATABASE_ID || process.env.DATABASE_ID || ''
 export const NOTION_DATABASE_COMMENTS_ID =
-  import.meta.env.NOTION_DATABASE_COMMENTS_ID || process.env.NOTION_DATABASE_COMMENTS_ID || ''
+  import.meta.env.NOTION_DATABASE_COMMENTS_ID ||
+  process.env.NOTION_DATABASE_COMMENTS_ID ||
+  ''
 
 export const CUSTOM_DOMAIN =
   import.meta.env.CUSTOM_DOMAIN || process.env.CUSTOM_DOMAIN || '' // <- Set your costom domain if you have. e.g. alpacat.com
