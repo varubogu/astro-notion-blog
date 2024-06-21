@@ -1,5 +1,6 @@
 ---
 import * as interfaces from '../../lib/interfaces.ts'
+// import { BACKEND_ENDPOINT_URL } from '../../server-constants'
 import {
   getPosts,
   getAllPosts,
@@ -10,6 +11,7 @@ import {
   getAllTags,
   getAllBlocksByBlockId,
   downloadFile,
+  getPostCommentByPageId,
 } from '../../lib/notion/client.ts'
 import {
   getPostLink,
@@ -28,9 +30,9 @@ import styles from '../../styles/blog.module.css'
 import BlogPostHeadline from '../../components/BlogPostHeadline.astro'
 import TweetTimeline from '../../components/TweetTimeline.astro'
 // import CommentAreaClient from '../../components/CommentAreaClient.astro'
-import CommentAreaClientReact from '../../components/CommentAreaClientReact'
+// import CommentAreaClientReact from '../../components/CommentAreaClientReact'
+import CommentAreaServer from '../../components/CommentAreaServer.astro'
 import CommentForm from '../../components/CommentForm.astro'
-import { BACKEND_ENDPOINT_URL } from '../../server-constants'
 
 export async function getStaticPaths() {
   const posts = await getAllPosts()
@@ -44,7 +46,7 @@ if (!post) {
   throw new Error('Post not found. slug: ${slug}')
 }
 
-const [blocks, allPosts, rankedPosts, recentPosts, tags, postsHavingSameTag] =
+const [blocks, allPosts, rankedPosts, recentPosts, tags, postsHavingSameTag, postComments] =
   await Promise.all([
     getAllBlocksByBlockId(post.PageId),
     getAllPosts(),
@@ -52,6 +54,7 @@ const [blocks, allPosts, rankedPosts, recentPosts, tags, postsHavingSameTag] =
     getPosts(5),
     getAllTags(),
     getPostsByTag(post.Tags[0]?.name, 6),
+    getPostCommentByPageId(post.PageId),
   ])
 
 const fileAtacchedBlocks = extractTargetBlocks('image', blocks)
@@ -113,7 +116,8 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
       <PostBody blocks={blocks} />
       <PostTags post={post} />
       <!-- <CommentAreaClient post={post} /> -->
-      <CommentAreaClientReact post={post} backendUrl={BACKEND_ENDPOINT_URL} client:load/>
+      <!-- <CommentAreaClientReact post={post} backendUrl={BACKEND_ENDPOINT_URL} client:load/> -->
+      <CommentAreaServer postComments={postComments} />
       <CommentForm post={post} />
 
       <footer>

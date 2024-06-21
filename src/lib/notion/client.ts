@@ -9,6 +9,7 @@ import {
   DATABASE_ID,
   NUMBER_OF_POSTS_PER_PAGE,
   REQUEST_TIMEOUT_MS,
+  NOTION_DATABASE_COMMENTS_ID,
 } from '../../server-constants'
 import type * as responses from './responses'
 import type * as requestParams from './request-params'
@@ -51,6 +52,7 @@ import type {
   LinkToPage,
   Mention,
   Reference,
+  PostComment,
 } from '../interfaces'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 import { Client, APIResponseError } from '@notionhq/client'
@@ -60,6 +62,7 @@ const client = new Client({
 })
 
 let postsCache: Post[] | null = null
+let postCommentsCache: PostComment[] | null = null
 let dbCache: Database | null = null
 
 const numberOfRetry = 2
@@ -207,6 +210,82 @@ export async function getPostsByTagAndPage(
   const endIndex = startIndex + NUMBER_OF_POSTS_PER_PAGE
 
   return posts.slice(startIndex, endIndex)
+}
+
+export async function getPostCommentByPageId(pageId: string): Promise<PostComment[]> {
+  const allComments = await getAllPostComments()
+  return allComments.filter((comment) => comment.Article === pageId)
+}
+
+export async function getAllPostComments(): Promise<PostComment[]> {
+  if (postCommentsCache !== null) {
+    return Promise.resolve(postCommentsCache)
+  }
+
+  const params = {
+    database_id: NOTION_DATABASE_COMMENTS_ID,
+    filter: {
+      and: [
+        {
+          property: 'Published',
+          checkbox: {
+            equals: true,
+          },
+        },
+        {
+          property: '作成日時',
+          date: {
+            on_or_before: new Date().toISOString(),
+          },
+        },
+      ],
+    },
+    sorts: [
+      {
+        property: "Article",
+        direction: "ascending"
+      },
+      {
+          property: "作成日時",
+          direction: "ascending"
+      }
+    ]
+  };
+
+  let results: responses.PageObject[] = []
+  while (true) {
+    const res = await retry(
+      async (bail) => {
+        try {
+          return (await client.databases.query(
+            params as any // eslint-disable-line @typescript-eslint/no-explicit-any
+          )) as responses.QueryDatabaseResponse
+        } catch (error: unknown) {
+          if (error instanceof APIResponseError) {
+            if (error.status && error.status >= 400 && error.status < 500) {
+              bail(error)
+            }
+          }
+          throw error
+        }
+      },
+      {
+        retries: numberOfRetry,
+      }
+    )
+
+    results = results.concat(res.results)
+
+    if (!res.has_more) {
+      break
+    }
+
+    params['start_cursor'] = res.next_cursor as string
+  }
+
+  postCommentsCache = results
+    .map((pageObject) => _buildPostComment(pageObject))
+  return postCommentsCache
 }
 
 export async function getNumberOfPages(): Promise<number> {
@@ -1042,4 +1121,36 @@ function _buildRichText(richTextObject: responses.RichTextObject): RichText {
   }
 
   return richText
+}
+
+function _validCommentObject(pageObject: responses.PageObject): boolean {
+  const prop = pageObject.properties
+  return (
+    !!prop.Page.title &&
+    prop.Page.title.length > 0 &&
+    !!prop.Slug.rich_text &&
+    prop.Slug.rich_text.length > 0 &&
+    !!prop.Date.date
+  )
+}
+
+function _buildPostComment(pageObject: responses.PageObject): PostComment {
+  const prop = pageObject.properties
+
+  const postComment: PostComment = {
+    Id: pageObject.id,
+    Article: prop.Article.relation ? prop.Article.relation[0].id : '',
+    Commenter: prop.Commenter.rich_text
+    ? prop.Commenter.rich_text.map((richText) => richText.plain_text).join('')
+    : '',
+    Comment: prop.Comment.rich_text
+    ? prop.Comment.rich_text.map((richText) => richText.plain_text).join('')
+    : '',
+    Published: prop.Published.checkbox ?? false,
+    Deleted: prop.Deleted.checkbox ?? false,
+    CreatedAt: prop['作成日時'].created_time || '',
+    UpdatedAt: prop['最終更新日時'].created_time || '',
+  }
+
+  return postComment
 }

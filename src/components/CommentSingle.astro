@@ -1,0 +1,19 @@
+---
+import type { PostComment } from '../lib/interfaces.ts'
+import '../styles/notion-color.css'
+
+export interface Props {
+  comment: PostComment
+}
+
+const { comment } = Astro.props
+---
+
+<div>
+  <div>
+    <p>名前:{comment.Commenter}</p>
+  </div>
+  <div>
+    <p>{comment.Comment}</p>
+  </div>
+</div>
