@@ -27,8 +27,10 @@ import BlogTagsLink from '../../components/BlogTagsLink.astro'
 import styles from '../../styles/blog.module.css'
 import BlogPostHeadline from '../../components/BlogPostHeadline.astro'
 import TweetTimeline from '../../components/TweetTimeline.astro'
-import CommentAreaClient from '../../components/CommentAreaClient.astro'
+// import CommentAreaClient from '../../components/CommentAreaClient.astro'
+import CommentAreaClientReact from '../../components/CommentAreaClientReact'
 import CommentForm from '../../components/CommentForm.astro'
+import { BACKEND_ENDPOINT_URL } from '../../server-constants'
 
 export async function getStaticPaths() {
   const posts = await getAllPosts()
@@ -110,7 +112,8 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
       <PostPageTitle post={post} enableLink={false} />
       <PostBody blocks={blocks} />
       <PostTags post={post} />
-      <CommentAreaClient post={post} />
+      <!-- <CommentAreaClient post={post} /> -->
+      <CommentAreaClientReact post={post} backendUrl={BACKEND_ENDPOINT_URL} client:load/>
       <CommentForm post={post} />
 
       <footer>

@@ -1,3 +1,4 @@
+import react from '@astrojs/react';
 import { defineConfig } from 'astro/config';
 import { CUSTOM_DOMAIN, BASE_PATH } from './src/server-constants';
 import CoverImageDownloader from './src/integrations/cover-image-downloader';
@@ -36,6 +37,7 @@ export default defineConfig({
   site: getSite(),
   base: BASE_PATH,
   integrations: [
+    react(),
     CoverImageDownloader(),
     CustomIconDownloader(),
     FeaturedImageDownloader(),
