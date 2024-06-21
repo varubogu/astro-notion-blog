@@ -212,7 +212,9 @@ export async function getPostsByTagAndPage(
   return posts.slice(startIndex, endIndex)
 }
 
-export async function getPostCommentByPageId(pageId: string): Promise<PostComment[]> {
+export async function getPostCommentByPageId(
+  pageId: string
+): Promise<PostComment[]> {
   const allComments = await getAllPostComments()
   return allComments.filter((comment) => comment.Article === pageId)
 }
@@ -242,15 +244,15 @@ export async function getAllPostComments(): Promise<PostComment[]> {
     },
     sorts: [
       {
-        property: "Article",
-        direction: "ascending"
+        property: 'Article',
+        direction: 'ascending',
       },
       {
-          property: "作成日時",
-          direction: "ascending"
-      }
-    ]
-  };
+        property: '作成日時',
+        direction: 'ascending',
+      },
+    ],
+  }
 
   let results: responses.PageObject[] = []
   while (true) {
@@ -283,8 +285,7 @@ export async function getAllPostComments(): Promise<PostComment[]> {
     params['start_cursor'] = res.next_cursor as string
   }
 
-  postCommentsCache = results
-    .map((pageObject) => _buildPostComment(pageObject))
+  postCommentsCache = results.map((pageObject) => _buildPostComment(pageObject))
   return postCommentsCache
 }
 
@@ -1141,11 +1142,11 @@ function _buildPostComment(pageObject: responses.PageObject): PostComment {
     Id: pageObject.id,
     Article: prop.Article.relation ? prop.Article.relation[0].id : '',
     Commenter: prop.Commenter.rich_text
-    ? prop.Commenter.rich_text.map((richText) => richText.plain_text).join('')
-    : '',
+      ? prop.Commenter.rich_text.map((richText) => richText.plain_text).join('')
+      : '',
     Comment: prop.Comment.rich_text
-    ? prop.Comment.rich_text.map((richText) => richText.plain_text).join('')
-    : '',
+      ? prop.Comment.rich_text.map((richText) => richText.plain_text).join('')
+      : '',
     Published: prop.Published.checkbox ?? false,
     Deleted: prop.Deleted.checkbox ?? false,
     CreatedAt: prop['作成日時'].created_time || '',
