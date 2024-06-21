@@ -44,7 +44,7 @@ const { post } = Astro.props
 document.getElementById('commentForm')?.addEventListener('submit', async function(ev) {
   ev.preventDefault();
   const formData = new FormData(ev.target);
-  const jsonObject: any = {};
+  const jsonObject = {};
   formData.forEach((value, key) => {
     jsonObject[key] = value;
   });
@@ -59,7 +59,7 @@ document.getElementById('commentForm')?.addEventListener('submit', async functio
       },
       body: JSON.stringify(jsonObject),
     });
-    const data = await response.json();
+    await response.json();
     alert('コメントを投稿しました。管理者の承認後に公開されます。');
   } catch (error) {
     alert('エラーが発生しました。');
