@@ -1,0 +1,26 @@
+---
+import type { PostComment } from '../lib/interfaces.ts'
+import '../styles/notion-color.css'
+import CommentSingle from './CommentSingle.astro'
+
+export interface Props {
+  postComments: PostComment[],
+}
+
+const { postComments } = Astro.props
+---
+
+<div>
+    <hr>
+    <p>コメント</p>
+    <hr>
+
+    {
+      postComments && postComments.map((c: PostComment) => (
+        <div>
+          <CommentSingle comment={c}/>
+          <hr>
+        </div>
+      ))
+    }
+</div>

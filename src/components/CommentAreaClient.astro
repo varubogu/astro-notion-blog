@@ -1,0 +1,60 @@
+---
+import type { Post } from '../lib/interfaces.ts'
+import { BACKEND_ENDPOINT_URL } from '../server-constants'
+import '../styles/notion-color.css'
+
+export interface Props {
+  post: Post,
+
+}
+
+const { post } = Astro.props
+---
+
+<div>
+    <hr>
+    <p>コメント</p>
+    <hr>
+    <div id="comments">
+    </div>
+</div>
+<input type="hidden" id="getCommentUrl" value={`${BACKEND_ENDPOINT_URL}/api/v1/comments/get/${post.Slug}`}>
+<script>
+function escapeHTML(str: string): string {
+    return str.replace(/[&<>"']/g, (match) => {
+        switch (match) {
+            case '&':
+                return '&amp;';
+            case '<':
+                return '&lt;';
+            case '>':
+                return '&gt;';
+            case '"':
+                return '&quot;';
+            case "'":
+                return '&#39;';
+            default:
+                return match;
+        }
+    });
+}
+const url = document.getElementById("getCommentUrl")?.value
+fetch(url)
+  .then(async response => {
+    const json = await response.json();
+    let commentHtml = "";
+    for (const c of json.comments) {
+      commentHtml += `<div>
+  <div>
+    <p>名前:${escapeHTML(c.commenter)}</p>
+  </div>
+  <div>
+    <p>${escapeHTML(c.comment)}</p>
+  </div>
+</div>
+<hr>`;
+    }
+    const commentArea = document.getElementById("comments");
+    commentArea.innerHTML = commentHtml;
+  })
+</script>

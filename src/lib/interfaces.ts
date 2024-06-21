@@ -18,6 +18,17 @@ export interface Post {
   Rank: number
 }
 
+export interface PostComment {
+  Id: string
+  Article: string
+  Commenter: string
+  Comment: string
+  Published: boolean
+  Deleted: boolean
+  CreatedAt: string
+  UpdatedAt: string
+}
+
 export interface Block {
   Id: string
   Type: string
