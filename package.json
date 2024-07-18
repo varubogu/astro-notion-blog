@@ -4,8 +4,8 @@
   "version": "0.6.3",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "dev": "astro dev --host",
+    "start": "astro dev --host",
     "build": "astro build",
     "build:cached": "npm run cache:fetch && astro build",
     "preview": "astro preview",
