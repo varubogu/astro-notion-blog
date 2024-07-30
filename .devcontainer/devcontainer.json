@@ -1,34 +1,14 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
-  "name": "Node.js & TypeScript",
+  "name": "astro-notion-blog",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bullseye",
+  "image": "mcr.microsoft.com/devcontainers/base:jammy",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "nodeGypDependencies": true,
-      "version": "lts",
-      "nvmVersion": "latest"
-    },
-    "ghcr.io/devcontainers-contrib/features/markdownlint-cli2:1": {
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers-contrib/features/ts-node:1": {
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers-contrib/features/typescript:2": {
-      "version": "latest"
-    },
-    "ghcr.io/r3dpoint/devcontainer-features/tailwindcss-standalone-cli:1": {
+    "ghcr.io/devcontainers-contrib/features/typescript": {
       "version": "latest"
     }
   },
-  "containerEnv": {
-    "SSH_AUTH_SOCK": "/run/host-services/ssh-auth.sock"
-  },
-  "mounts": [
-    "source=/run/host-services/ssh-auth.sock,target=/run/host-services/ssh-auth.sock,type=bind"
-  ],
   "customizations": {
     "vscode": {
       "extensions": [

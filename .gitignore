@@ -29,3 +29,6 @@ public/notion/*
 
 # JetBrains Tools
 .idea/
+
+# environment
+.env
