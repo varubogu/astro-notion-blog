@@ -43,16 +43,21 @@ const { post } = Astro.props
 <script>
 document.getElementById('commentForm')?.addEventListener('submit', async function(ev) {
   ev.preventDefault();
-  const formData = new FormData(ev.target);
-  const jsonObject = {};
+  const target = ev.target as HTMLFormElement;
+  const currentTarget = ev.currentTarget as HTMLFormElement;
+  const formData = new FormData(target);
+  const jsonObject: { [key: string]: string } = {};
   formData.forEach((value, key) => {
-    jsonObject[key] = value;
+    jsonObject[key] = value as string;
   });
-  jsonObject['comment'] = document.getElementById('comment')?.value
+  const comment = document.getElementById('comment') as HTMLTextAreaElement;
+  if (comment) {
+    jsonObject['comment'] = comment.value
+  }
 
   // ここでformDataに追加して送信処理を行います
   try {
-    const response = await fetch(ev.currentTarget.action, {
+    const response = await fetch(currentTarget.action, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -61,7 +66,7 @@ document.getElementById('commentForm')?.addEventListener('submit', async functio
     });
     await response.json();
     alert('コメントを投稿しました。管理者の承認後に公開されます。');
-  } catch (error) {
+  } catch {
     alert('エラーが発生しました。');
   }
 })

@@ -40,7 +40,6 @@ import type {
   TableRow,
   TableCell,
   Toggle,
-  ColumnList,
   Column,
   TableOfContents,
   RichText,
@@ -826,10 +825,9 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
       }
       break
     case 'column_list':
-      const columnList: ColumnList = {
+      block.ColumnList = {
         Columns: [],
       }
-      block.ColumnList = columnList
       break
     case 'table_of_contents':
       if (blockObject.table_of_contents) {
