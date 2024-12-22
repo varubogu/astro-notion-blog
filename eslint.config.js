@@ -12,8 +12,11 @@ export default [
   {languageOptions: { globals: globals.browser }},
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
   {
+    files: ["**/*.{jsx,tsx}"],
+    plugins: {
+      react: pluginReact
+    },
     settings: {
       react: {
         version: "detect"
