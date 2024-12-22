@@ -3,11 +3,12 @@
 {
   "name": "astro-notion-blog",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "mcr.microsoft.com/devcontainers/base:jammy",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
     "ghcr.io/devcontainers-contrib/features/typescript": {
       "version": "latest"
-    }
+    },
+    "ghcr.io/shyim/devcontainers-features/bun": "latest"
   },
   "customizations": {
     "vscode": {
@@ -26,7 +27,9 @@
         "ICS.japanese-proofreading",
         "donjayamanne.githistory",
         "GitHub.vscode-pull-request-github",
-        "GitHub.copilot"
+        "GitHub.copilot",
+        "fill-labs.dependi",
+        "oven.bun-vscode"
       ]
     }
   }
