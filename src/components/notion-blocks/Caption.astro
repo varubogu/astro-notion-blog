@@ -9,8 +9,8 @@ const { richTexts } = Astro.props
 ---
 
 {
-  richTexts.length > 0 && richTexts[0].Text.Content && (
-    <div className="caption">
+  richTexts.length > 0 && richTexts[0]?.Text?.Content && (
+    <div class="caption">
       <div>{richTexts[0].Text.Content}</div>
     </div>
   )
