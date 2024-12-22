@@ -33,4 +33,5 @@ public/notion/*
 .idea/
 
 # environment
-.env
+*.env*
+!*.env.example
