@@ -48,7 +48,7 @@ const grammer =
       )
     }
   </div>
-  <Caption richTexts={block.Code.Caption} />
+  <Caption richTexts={block.Code?.Caption ?? []} />
 </div>
 
 <script>
@@ -57,17 +57,21 @@ const grammer =
 </script>
 
 <script>
-  document.querySelectorAll('button.copy').forEach((button) => {
-    button.addEventListener('click', (ev) => {
-      navigator.clipboard
-        .writeText(ev.target.getAttribute('data-code'))
-        .then(() => {
-          const originalText = ev.target.innerText
+  document.querySelectorAll('button.copy').forEach((button: Element) => {
+    if (!button || !(button instanceof HTMLButtonElement)) return
 
-          ev.target.innerText = ev.target.getAttribute('data-done-text')
+    button.addEventListener('click', (ev: MouseEvent) => {
+      const target = ev.target as HTMLButtonElement
+      if (!target) return
+      navigator.clipboard
+        .writeText(target.getAttribute('data-code') ?? '')
+        .then(() => {
+          const originalText = target.innerText
+
+          target.innerText = target.getAttribute('data-done-text') ?? ''
 
           setTimeout(() => {
-            ev.target.innerText = originalText
+            target.innerText = originalText
           }, 3000)
         })
     })

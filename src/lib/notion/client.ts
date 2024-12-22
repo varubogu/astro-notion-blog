@@ -53,7 +53,6 @@ import type {
   Reference,
   PostComment,
 } from '../interfaces'
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 import { Client, APIResponseError } from '@notionhq/client'
 
 const client = new Client({
@@ -223,7 +222,7 @@ export async function getAllPostComments(): Promise<PostComment[]> {
     return Promise.resolve(postCommentsCache)
   }
 
-  const params = {
+  const params: requestParams.QueryDatabase = {
     database_id: NOTION_DATABASE_COMMENTS_ID,
     filter: {
       and: [
