@@ -17,8 +17,11 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v4
 
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v2
+
       - name: Install packages
-        run: npm install
+        run: bun install
 
       - name: Run lint
-        run: npm run lint
+        run: bun run lint
