@@ -8,7 +8,7 @@
 
 <img src="https://user-images.githubusercontent.com/1063435/213838069-c9654c32-ec9b-4e82-a3b5-2acbd665b16a.png" width="480">
 
-astro-notion-blog を使えば [Notion](https://www.notion.so) で書けるブログを作ることができます。  
+astro-notion-blog を使えば [Notion](https://www.notion.so) で書けるブログを作ることができます。
 ブログは [Astro](https://astro.build/) を使って静的生成されるので非常に高速です。
 
 - :rocket: ページの表示が**爆速**
@@ -74,7 +74,7 @@ astro-notion-blog を使えば [Notion](https://www.notion.so) で書けるブ�
 
 11. "Save and Deploy" をクリックし、デプロイが完了すると Notion Blog が見えるようになります
 
-astro-notion-blog では新しい記事や変更を公開したいとき毎回デプロイが必要になります。  
+astro-notion-blog では新しい記事や変更を公開したいとき毎回デプロイが必要になります。
 Cloudflare Pages のダッシュボードから手動でデプロイするか、GitHub Action のような CI を使って定時デプロイしてください。
 
 ## :hammer_and_pick: カスタマイズするには
@@ -96,8 +96,8 @@ export DATABASE_ID=<YOUR_DATABASE_ID>
 2. 依存関係をインストールしローカルサーバーを起動します
 
 ```sh
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
 3. ブラウザで [http://localhost:4321](http://localhost:4321) を開きます

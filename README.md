@@ -89,8 +89,8 @@ export DATABASE_ID=<YOUR_DATABASE_ID>
 2. Install dependencies and start local server
 
 ```sh
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
 3. Open [http://localhost:4321](http://localhost:4321) in your browser
