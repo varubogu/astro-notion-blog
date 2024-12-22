@@ -16,6 +16,11 @@ interface Comment {
 }
 
 const CommentAreaClientReact: React.FC<Props> = ({ post, backendUrl }) => {
+
+  if (!backendUrl) {
+    return null
+  }
+
   const url = `${backendUrl}/api/v1/comments/get/${post.Slug}`;
   const [comments, setComments] = useState<Comment[]>([]);
 

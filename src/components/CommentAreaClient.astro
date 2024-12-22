@@ -9,17 +9,8 @@ export interface Props {
 }
 
 const { post } = Astro.props
----
 
-<div>
-    <hr>
-    <p>コメント</p>
-    <hr>
-    <div id="comments">
-    </div>
-</div>
-<input type="hidden" id="getCommentUrl" value={`${BACKEND_ENDPOINT_URL}/api/v1/comments/get/${post.Slug}`}>
-<script>
+
 function escapeHTML(str: string): string {
     return str.replace(/[&<>"']/g, (match) => {
         switch (match) {
@@ -61,4 +52,16 @@ fetch(url.value)
       commentArea.innerHTML = commentHtml;
     }
   })
-</script>
+---
+
+{
+  BACKEND_ENDPOINT_URL && (
+    <div>
+      <hr />
+      <p>コメント</p>
+      <hr />
+      <div id="comments"></div>
+    </div>
+    <input type="hidden" id="getCommentUrl" value={`${BACKEND_ENDPOINT_URL}/api/v1/comments/get/${post.Slug}`} />
+  )
+}
