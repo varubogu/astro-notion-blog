@@ -29,7 +29,9 @@
         "GitHub.vscode-pull-request-github",
         "GitHub.copilot",
         "fill-labs.dependi",
-        "oven.bun-vscode"
+        "oven.bun-vscode",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
       ]
     }
   }
