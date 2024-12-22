@@ -9,6 +9,7 @@ export interface Props {
 
 
 const { post } = Astro.props
+if (!BACKEND_ENDPOINT_URL) return null
 ---
 <div>
   <form id="commentForm" method="post" class="comment-form" action=`${BACKEND_ENDPOINT_URL}/api/v1/comments/add`>

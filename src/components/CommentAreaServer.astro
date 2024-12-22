@@ -1,5 +1,6 @@
 ---
 import type { PostComment } from '../lib/interfaces.ts'
+import { BACKEND_ENDPOINT_URL } from '../server-constants'
 import '../styles/notion-color.css'
 import CommentSingle from './CommentSingle.astro'
 
@@ -8,18 +9,20 @@ export interface Props {
 }
 
 const { postComments } = Astro.props
+
+if (!BACKEND_ENDPOINT_URL) return null
 ---
 
 <div>
-  <hr>
+  <hr />
   <p>コメント</p>
-  <hr>
+  <hr />
   {
     postComments && postComments.map((c: PostComment) => (
-        <div>
-          <CommentSingle comment={c}/>
-          <hr>
-        </div>
+      <div>
+        <CommentSingle comment={c}/>
+        <hr />
+      </div>
     ))
   }
 </div>

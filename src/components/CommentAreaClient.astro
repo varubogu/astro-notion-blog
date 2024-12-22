@@ -8,6 +8,8 @@ export interface Props {
 
 }
 
+if (!BACKEND_ENDPOINT_URL) return null
+
 const { post } = Astro.props
 
 
