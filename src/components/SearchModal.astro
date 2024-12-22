@@ -220,7 +220,7 @@
       Array.from(ul.children).forEach((element) => {
         element.classList.remove('selected')
       })
-      target.closest('li').classList.add('selected')
+      target.closest('li')?.classList.add('selected')
     }
 
     function searchAndRender() {

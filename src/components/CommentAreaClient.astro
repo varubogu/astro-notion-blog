@@ -38,8 +38,10 @@ function escapeHTML(str: string): string {
         }
     });
 }
-const url = document.getElementById("getCommentUrl")?.value
-fetch(url)
+const url = document.getElementById("getCommentUrl") as HTMLInputElement | null
+if (!url) return
+
+fetch(url.value)
   .then(async response => {
     const json = await response.json();
     let commentHtml = "";
@@ -55,6 +57,8 @@ fetch(url)
 <hr>`;
     }
     const commentArea = document.getElementById("comments");
-    commentArea.innerHTML = commentHtml;
+    if (commentArea) {
+      commentArea.innerHTML = commentHtml;
+    }
   })
 </script>

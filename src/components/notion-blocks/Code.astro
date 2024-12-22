@@ -22,10 +22,10 @@ export interface Props {
 
 const { block } = Astro.props
 
-const code = block.Code.RichTexts.map(
-  (richText: interfaces.RichText) => richText.Text.Content
+const code = block.Code?.RichTexts.map(
+  (richText: interfaces.RichText) => richText.Text?.Content ?? ''
 ).join('')
-const language = block.Code.Language.toLowerCase()
+const language = block.Code?.Language?.toLowerCase() ?? ''
 const grammer =
   Prism.languages[language.toLowerCase()] || Prism.languages.javascript
 ---
@@ -43,7 +43,7 @@ const grammer =
               Copy
             </button>
           </div>
-          <pre><code set:html={Prism.highlight(code, grammer, language)} /></pre>
+          <pre><code set:html={Prism.highlight(code ?? '', grammer, language)} /></pre>
         </>
       )
     }
