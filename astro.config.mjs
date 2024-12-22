@@ -1,4 +1,5 @@
 import react from '@astrojs/react';
+import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 import { CUSTOM_DOMAIN, BASE_PATH } from './src/server-constants';
 import CoverImageDownloader from './src/integrations/cover-image-downloader';
@@ -38,6 +39,7 @@ export default defineConfig({
   base: BASE_PATH,
   integrations: [
     react(),
+    icon(),
     CoverImageDownloader(),
     CustomIconDownloader(),
     FeaturedImageDownloader(),
@@ -46,5 +48,8 @@ export default defineConfig({
   ],
   sitemap: {
     trailingSlash: 'remove',
+  },
+  icons: {
+    iconSets: 'logos',
   },
 });
