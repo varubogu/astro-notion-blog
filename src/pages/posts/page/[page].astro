@@ -38,7 +38,12 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
 ])
 ---
 
-<Layout title={`Posts ${page}/${numberOfPages}`} path={`/posts/page/${page}`}>
+<Layout
+  title={`Posts ${page}/${numberOfPages}`}
+  path={`/posts/page/${page}`}
+  description={`Posts ${page}/${numberOfPages}`}
+  ogImage={`/posts/page/${page}`}
+>
   <div slot="main" class={styles.main}>
     <header>
       <div class="page-container">{page}/{numberOfPages}</div>
@@ -51,8 +56,8 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
         posts.map((post) => (
           <div class={styles.post} key={post.Slug}>
             <PostDate post={post} />
-            <PostTags post={post} />
-            <PostTitle post={post} />
+            <PostTags post={post} enableLink={false} />
+            <PostTitle post={post} enableLink={false} />
             <PostFeaturedImage post={post} />
             <PostExcerpt post={post} />
             <ReadMoreLink post={post} />
@@ -65,6 +70,7 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
       <Pagination
         currentPage={parseInt(page, 10)}
         numberOfPages={numberOfPages}
+        tag=""
       />
     </footer>
   </div>
