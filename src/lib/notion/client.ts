@@ -55,6 +55,9 @@ import type {
 } from '../interfaces'
 import { Client, APIResponseError } from '@notionhq/client'
 
+import pkg from '@notionhq/client/build/src/api-endpoints'
+const { DatabasePropertyConfigResponse } = pkg
+
 const client = new Client({
   auth: NOTION_API_SECRET,
 })
