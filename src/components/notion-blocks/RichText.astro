@@ -47,6 +47,7 @@ const { richText } = Astro.props
                               )}
                             {richText.Equation && (
                               <span
+                                {/* eslint-disable-next-line astro/no-set-html-directive */}
                                 set:html={katex.renderToString(
                                   richText.Equation.Expression,
                                   { throwOnError: false }

@@ -43,6 +43,7 @@ const grammer =
               Copy
             </button>
           </div>
+          {/* eslint-disable-next-line astro/no-set-html-directive */}
           <pre><code set:html={Prism.highlight(code ?? '', grammer, language)} /></pre>
         </>
       )

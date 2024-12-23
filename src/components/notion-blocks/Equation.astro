@@ -8,10 +8,10 @@ export interface Props {
 
 const { block } = Astro.props
 ---
-
 <div
   class="equation"
-  set:html={katex.renderToString(block.Equation.Expression, {
+  {/* eslint-disable-next-line astro/no-set-html-directive */}
+  set:html={katex.renderToString(block.Equation?.Expression ?? '', {
     throwOnError: false,
   })}
 />
