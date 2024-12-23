@@ -55,7 +55,6 @@ import type {
 } from '../interfaces'
 import { Client, APIResponseError } from '@notionhq/client'
 
-
 const client = new Client({
   auth: NOTION_API_SECRET,
 })
