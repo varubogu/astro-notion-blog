@@ -11,12 +11,12 @@ export interface QueryDatabaseResponse {
 
 // Retrieve a database response
 // https://developers.notion.com/reference/retrieve-a-database
- 
+
 export interface RetrieveDatabaseResponse extends DatabaseObject {}
 
 // Retrieve a block response
 // https://developers.notion.com/reference/retrieve-a-block
- 
+
 export interface RetrieveBlockResponse extends BlockObject {}
 
 // Retrieve block children response
