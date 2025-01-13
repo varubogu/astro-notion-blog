@@ -1,8 +1,8 @@
 # build output
 dist/
 .output/
-.nx
-.astro
+.astro/
+.nx/
 
 # dependencies
 node_modules/

@@ -11,6 +11,7 @@ import {
   REQUEST_TIMEOUT_MS,
   NOTION_DATABASE_COMMENTS_ID,
 } from '../../server-constants'
+import type { AxiosResponse } from 'axios'
 import type * as responses from './responses'
 import type * as requestParams from './request-params'
 import type {
