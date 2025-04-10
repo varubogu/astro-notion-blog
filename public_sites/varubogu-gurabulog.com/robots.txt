@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://varubogu-gurabulog.com/sitemap-index.xml

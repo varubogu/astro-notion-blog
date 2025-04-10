@@ -7,6 +7,7 @@ import CoverImageDownloader from './src/integrations/cover-image-downloader';
 import CustomIconDownloader from './src/integrations/custom-icon-downloader';
 import FeaturedImageDownloader from './src/integrations/featured-image-downloader';
 import PublicNotionCopier from './src/integrations/public-notion-copier';
+import SiteSettingsCopier from './src/integrations/site-settings-copier';
 import sitemap from '@astrojs/sitemap';
 const getSite = function () {
   if (CUSTOM_DOMAIN) {
@@ -46,6 +47,7 @@ export default defineConfig({
     FeaturedImageDownloader(),
     PublicNotionCopier(),
     sitemap(),
+    SiteSettingsCopier(),
   ],
   sitemap: {
     trailingSlash: 'remove',
