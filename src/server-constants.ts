@@ -13,7 +13,8 @@ export const BASE_PATH =
   import.meta.env.BASE_PATH || process.env.BASE_PATH || '' // <- Set sub directory path if you want. e.g. /docs/
 export const BACKEND_ENDPOINT_URL =
   import.meta.env.BACKEND_ENDPOINT_URL || process.env.BACKEND_ENDPOINT_URL || ''
-
+export const GOOGLE_ADS_URL =
+  import.meta.env.GOOGLE_ADS_URL || process.env.GOOGLE_ADS_URL || ''
 export const PUBLIC_GA_TRACKING_ID = import.meta.env.PUBLIC_GA_TRACKING_ID
 export const NUMBER_OF_POSTS_PER_PAGE = 10
 export const REQUEST_TIMEOUT_MS = parseInt(

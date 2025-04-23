@@ -1,5 +1,5 @@
 ---
-import { PUBLIC_GA_TRACKING_ID, ENABLE_LIGHTBOX } from '../server-constants.ts'
+import { PUBLIC_GA_TRACKING_ID, ENABLE_LIGHTBOX, GOOGLE_ADS_URL } from '../server-constants.ts'
 import { getDatabase } from '../lib/notion/client.ts'
 import { getNavLink, getStaticFilePath, filePath } from '../lib/blog-helpers.ts'
 import '../styles/syntax-coloring.css'
@@ -76,6 +76,12 @@ if (database.Icon && database.Icon.Type === 'file') {
       crossorigin="anonymous"
     />
     <link rel="sitemap" href="/sitemap-index.xml"/>
+    {
+      GOOGLE_ADS_URL && (
+        <script async src={GOOGLE_ADS_URL}
+        crossorigin="anonymous"></script>
+      )
+    }
   </head>
   <body>
     <GoogleAnalytics trackingId={PUBLIC_GA_TRACKING_ID} />
