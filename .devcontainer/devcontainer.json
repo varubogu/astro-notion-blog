@@ -5,9 +5,7 @@
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
-    "ghcr.io/devcontainers-contrib/features/typescript": {
-      "version": "latest"
-    },
+    "ghcr.io/devcontainers-extra/features/typescript": "latest",
     "ghcr.io/shyim/devcontainers-features/bun": "latest"
   },
   "customizations": {
