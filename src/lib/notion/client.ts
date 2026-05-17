@@ -322,8 +322,7 @@ export async function getAllPostComments(): Promise<PostComment[]> {
     params['start_cursor'] = res.next_cursor as string
   }
 
-  postCommentsCache = results
-    .map((pageObject) => _buildPostComment(pageObject))
+  postCommentsCache = results.map((pageObject) => _buildPostComment(pageObject))
   return postCommentsCache
 }
 
