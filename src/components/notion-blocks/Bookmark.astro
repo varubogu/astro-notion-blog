@@ -18,8 +18,7 @@ const { block, urlMap } = Astro.props
 const urlString = (block.Bookmark || block.LinkPreview || block.Embed)?.Url ?? ''
 
 let url: URL | null = null
-// let metadata: Record<string, string>
-let metadata: createMetascraper.Metadata | null = null
+let metadata: createMetascraper.Metadata | null
 try {
   url = new URL(urlString)
   const urlString2 = url.toString()
