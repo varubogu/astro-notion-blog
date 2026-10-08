@@ -6,57 +6,57 @@ updates:
   # bun.lock + package.json (リポジトリルート)
   # package-ecosystem は bun.lock に対して "bun"
   # https://docs.github.com/en/code-security/dependabot/ecosystems-supported-by-dependabot/supported-ecosystems-and-repositories
-  - package-ecosystem: "bun"
-    directory: "/"
+  - package-ecosystem: 'bun'
+    directory: '/'
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-      timezone: "Asia/Tokyo"
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'Asia/Tokyo'
     open-pull-requests-limit: 5
     groups:
       bun-minor-and-patch:
-        applies-to: "version-updates"
+        applies-to: 'version-updates'
         patterns:
-          - "*"
+          - '*'
         update-types:
-          - "minor"
-          - "patch"
+          - 'minor'
+          - 'patch'
 
   # .github/workflows の actions/* 参照。directory は "/" が正しい
   # (Dependabot が /.github/workflows とルートの action.yml を探索する)
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: 'github-actions'
+    directory: '/'
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-      timezone: "Asia/Tokyo"
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'Asia/Tokyo'
     open-pull-requests-limit: 5
     groups:
       actions-minor-and-patch:
-        applies-to: "version-updates"
+        applies-to: 'version-updates'
         patterns:
-          - "*"
+          - '*'
         update-types:
-          - "minor"
-          - "patch"
+          - 'minor'
+          - 'patch'
 
   # .devcontainer/devcontainer.json の Features。directory は "/" が正しい
   # (Dependabot が .devcontainer/devcontainer.json を探索する)
-  - package-ecosystem: "devcontainers"
-    directory: "/"
+  - package-ecosystem: 'devcontainers'
+    directory: '/'
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-      timezone: "Asia/Tokyo"
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'Asia/Tokyo'
     open-pull-requests-limit: 5
     groups:
       devcontainers-minor-and-patch:
-        applies-to: "version-updates"
+        applies-to: 'version-updates'
         patterns:
-          - "*"
+          - '*'
         update-types:
-          - "minor"
-          - "patch"
+          - 'minor'
+          - 'patch'
