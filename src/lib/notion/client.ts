@@ -20,7 +20,6 @@ import type {
   Callout,
   Code,
   Column,
-  ColumnList,
   Database,
   Embed,
   Emoji,

@@ -305,10 +305,10 @@ const embedScriptSrc = `https://emgithub.com/embed-v2.js?target=${PreviewURL}&${
     flex: 1;
     width: 0;
 
-    table {
+    :global(table) {
       white-space: unset;
     }
-    td::after {
+    :global(td::after) {
       display: unset;
     }
   }

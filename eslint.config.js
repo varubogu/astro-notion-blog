@@ -4,7 +4,7 @@ import tseslint from 'typescript-eslint';
 import typescriptEslintParser from '@typescript-eslint/parser';
 import pluginReact from 'eslint-plugin-react';
 import eslintPluginAstro from 'eslint-plugin-astro';
-import astroParser from 'astro-eslint-parser';
+import * as astroParser from 'astro-eslint-parser';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [

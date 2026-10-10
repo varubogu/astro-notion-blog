@@ -46,13 +46,14 @@ const { richText } = Astro.props
                                 }
                               )}
                             {richText.Equation && (
+                              /* eslint-disable astro/no-set-html-directive */
                               <span
-                                {/* eslint-disable-next-line astro/no-set-html-directive */}
                                 set:html={katex.renderToString(
                                   richText.Equation.Expression,
                                   { throwOnError: false }
                                 )}
                               />
+                              /* eslint-enable astro/no-set-html-directive */
                             )}
                             {richText.Mention && richText.Mention.Page && (
                               <Mention pageId={richText.Mention.Page.Id} />
