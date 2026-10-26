@@ -61,7 +61,7 @@
     "metascraper-description": "^5.58.4",
     "metascraper-image": "^5.58.4",
     "metascraper-title": "^5.58.4",
-    "nx": "^23.3.0",
+    "nx": "^24.0.0",
     "prismjs": "^1.30.0",
     "sharp": "^0.35.5",
     "ts-node": "^10.9.2",
