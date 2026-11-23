@@ -21,9 +21,9 @@
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
-    "@astrojs/react": "^7.1.8",
+    "@astrojs/react": "^7.1.9",
     "@astrojs/rss": "^4.0.19",
-    "@astrojs/sitemap": "^3.7.4",
+    "@astrojs/sitemap": "^3.7.6",
     "@eslint/js": "^10.0.1",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/octicon": "^1.2.40",
@@ -41,15 +41,15 @@
     "@types/metascraper-title": "^5.14.5",
     "@types/prismjs": "^1.26.6",
     "@types/react-dom": "^19.3.0",
-    "@typescript-eslint/eslint-plugin": "^8.72.2",
-    "@typescript-eslint/parser": "^8.72.2",
-    "@typescript-eslint/typescript-estree": "^8.72.2",
-    "astro": "^7.4.11",
+    "@typescript-eslint/eslint-plugin": "^8.73.0",
+    "@typescript-eslint/parser": "^8.73.0",
+    "@typescript-eslint/typescript-estree": "^8.73.0",
+    "astro": "^7.4.13",
     "astro-eslint-parser": "^3.2.0",
     "astro-icon": "^1.2.0",
     "async-retry": "^1.3.3",
     "cli-progress": "^3.12.0",
-    "eslint": "^10.14.0",
+    "eslint": "^10.15.0",
     "eslint-plugin-astro": "^3.2.1",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-react": "^7.37.5",
@@ -57,15 +57,15 @@
     "globals": "^17.14.0",
     "katex": "^0.19.1",
     "mermaid": "^12.3.0",
-    "metascraper": "^5.58.6",
-    "metascraper-description": "^5.58.4",
-    "metascraper-image": "^5.58.4",
-    "metascraper-title": "^5.58.4",
+    "metascraper": "^5.58.7",
+    "metascraper-description": "^5.58.7",
+    "metascraper-image": "^5.58.7",
+    "metascraper-title": "^5.58.7",
     "nx": "^24.0.6",
     "prismjs": "^1.30.0",
     "sharp": "^0.35.5",
     "ts-node": "^10.9.2",
-    "typescript-eslint": "^8.72.2"
+    "typescript-eslint": "^8.73.0"
   },
   "nx": {
     "targets": {
@@ -88,6 +88,6 @@
     ]
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.68.2"
+    "@rollup/rollup-linux-x64-gnu": "^4.68.7"
   }
 }
